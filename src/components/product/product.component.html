@@ -1,0 +1,28 @@
+<div class="container mx-auto px-4 py-8">
+@for (item_product of product_items; track item_product) {
+    <app-cart-product
+    [item_product]="item_product"
+    (hadleAdd)="AddhadleCart($event)"
+    ></app-cart-product>
+}
+</div>
+
+<div class="text-center">
+    <button
+        (click)="delete()"
+        class="bg-amber-400 hover:bg-amber-500 text-white font-semibold py-2 px-6 rounded shadow-md transition duration-300 ease-in-out"
+        >
+        Clear
+    </button>
+</div>
+
+<div class="text-center mt-10">
+    <button 
+    (click)="alert()" 
+    *ngIf="total_Price > 0"
+    class="bg-blue-400 text-white font-semibold py-2 px-6 rounded shadow-md"
+  >
+    Total : {{ total_Price }}
+  </button>
+</div>
+

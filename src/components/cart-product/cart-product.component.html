@@ -1,0 +1,31 @@
+<div class="flex items-center justify-between w-full mb-2">
+    <!-- Product Image -->
+    <img 
+      [src]="item_product.images" 
+      [alt]="item_product.name" 
+      class="w-16 h-16 object-cover rounded-md mr-4" 
+    />
+  
+    <!-- Product Info -->
+    <div class="flex-1">
+      <h3 class="font-semibold">{{ item_product.title }}</h3>
+      <p class="text-sm text-gray-500">${{ item_product.price }}</p>
+    </div>
+  
+    <!-- Quantity Control -->
+    <div class="flex items-center gap-2 bg-gray-100 dark:bg-gray-700 rounded-full px-2 py-1">
+      <button (click)="decreaseQty()" class="w-8 h-8 flex items-center justify-center bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 rounded-full text-lg font-bold">−</button>
+  
+      <span class="min-w-[2rem] text-center font-medium text-gray-800 dark:text-gray-200">
+        {{ item_product.quantity }}
+      </span>
+  
+      <button (click)="increaseQty()" class="w-8 h-8 flex items-center justify-center bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 rounded-full text-lg font-bold">+</button>
+    </div>
+  </div>
+  
+  <h2 class="text-right font-semibold" style="font-size: 20px;">
+    Total: ${{ totalPrice.toFixed(2) }}
+  </h2>
+  
+  
