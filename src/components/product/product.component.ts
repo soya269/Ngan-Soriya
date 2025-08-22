@@ -55,6 +55,10 @@ export class ProductComponent implements OnInit {
       const total = this.product_items.reduce((sum, item) => sum + item.price * item.quantity, 0);
       return total.toFixed(2);
     }
+
+    get total_Qty(): number {
+      return this.product_items.reduce((sum, item) => sum + item.quantity, 0);
+    }
   
     GetApiCrud() {
       this.api.get('https://dummyjson.com/products').subscribe((result: any) => {
@@ -66,8 +70,11 @@ export class ProductComponent implements OnInit {
 
     alert() {
       Swal.fire({
-        title: 'Success!',
-        text: `Total Price: $${this.total_Price}`,
+        title: 'Cart Summary',
+        html: `
+          <p><b>Total Price:</b> $${this.total_Price}</p>
+          <p><b>Total Qty:</b> ${this.total_Qty}</p>
+        `,
         icon: 'success',
         confirmButtonText: 'OK'
       });
